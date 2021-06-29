@@ -1,0 +1,37 @@
+{% extends 'theme/front/app.html' %}
+
+@block content
+<div class="bg-white rounded-lg shadow-lg py-6">
+    <div class="block overflow-x-auto mx-6">
+        <table class="w-full text-left rounded-lg">
+            <thead>
+                <tr class="text-gray-800 border border-b-0">
+                    <th class="px-4 py-3">#</th>
+                    <th class="px-4 py-3">Name</th>
+                    <th class="px-4 py-3">Price</th>
+                    <th class="px-4 py-3">Divident Rate</th>
+                    <th class="px-4 py-3">Divident Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in companies %}
+                <tr class="w-full font-light text-gray-700 bg-gray-100 whitespace-no-wrap border border-b-0">
+                    <td class="px-4 py-4">1</td>
+                    <td class="px-4 py-4">
+                        <a target="_blank" href="http://merolagani.com/CompanyDetail.aspx?symbol={{item.symbol}}">
+                            {{item.name}} ({{item.symbol}})</a>
+                    </td>
+                    <td class="px-4 py-4">Rs. {{item.prices.0.price}} ( {{item.prices.0.price_at}})</td>
+                    <td class="px-4 py-4">
+                        <span>{{item.dividents.0.rate}}% Bonus</span>
+                    </td>
+                    <td class="px-4 py-4">
+                        <span">{{item.dividents.0.divident_at}}</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+@endblock 
